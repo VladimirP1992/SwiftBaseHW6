@@ -28,7 +28,7 @@ class Queue <Type> {
         }
     }
     
-    //Task2: closure
+    //Task2: closures
     func filter(condition: (Type) -> Bool) -> Queue<Type> {
         var newQueue: Queue<Type> = Queue<Type>()
         for element in elements where condition(element) {
@@ -43,6 +43,15 @@ class Queue <Type> {
             newQueue.push(predicate(element))
         }
         return newQueue
+    }
+    
+    //Task 3: subscript
+    subscript(index: Int) -> Type? {
+        if 0 <= index && index < count() {
+            return elements[index]
+        } else {
+            return nil
+        }
     }
 }
 
@@ -80,4 +89,6 @@ for _ in (0 ... changedQueue.count()) {
     print(changedQueue.pop() ?? "")
 }
 
-
+//Task 3 test
+print(intQueue[2] ?? "here is nil!")
+print(intQueue[99] ?? "here is nil!")
